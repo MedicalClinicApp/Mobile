@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Lock
@@ -32,6 +33,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import bien.dominik.android.medicalclinicapp.Activities.MainActivity
@@ -110,6 +113,8 @@ fun LoginScreen() {
             value = passwordText, onValueChange = {
                 passwordText = it
             },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            visualTransformation = PasswordVisualTransformation(),
             placeholder = { Text(text = "Hasło") },
             leadingIcon = {
                 Icon(
@@ -123,7 +128,7 @@ fun LoginScreen() {
 
         Button(
             onClick = {
-                Toast.makeText(context, "$usernameText", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "$usernameText\n$passwordText", Toast.LENGTH_LONG).show()
                 context.startActivity(intent)
             },
             modifier = Modifier.width(250.dp).height(100.dp).padding(top = 30.dp)

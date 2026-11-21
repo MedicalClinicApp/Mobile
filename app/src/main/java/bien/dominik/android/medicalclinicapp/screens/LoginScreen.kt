@@ -1,5 +1,6 @@
 package bien.dominik.android.medicalclinicapp.screens
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,7 +34,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import bien.dominik.android.medicalclinicapp.MainActivity
+import bien.dominik.android.medicalclinicapp.Activities.MainActivity
+import bien.dominik.android.medicalclinicapp.Activities.PatientActivity
 import bien.dominik.android.medicalclinicapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -69,6 +71,8 @@ fun LoginScreen() {
     @Composable
     fun LoginView() {
         val context = LocalContext.current
+        val intent: Intent = Intent(context, PatientActivity::class.java)
+        intent.putExtra("patient_welcome", "I have from mainActivity :) ")
         var usernameText by remember { mutableStateOf("") }
         var passwordText by remember { mutableStateOf("") }
 
@@ -120,6 +124,7 @@ fun LoginScreen() {
         Button(
             onClick = {
                 Toast.makeText(context, "$usernameText", Toast.LENGTH_LONG).show()
+                context.startActivity(intent)
             },
             modifier = Modifier.width(250.dp).height(100.dp).padding(top = 30.dp)
 

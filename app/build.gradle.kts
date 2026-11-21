@@ -35,12 +35,18 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 }
 
 dependencies {
 
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.material)
     val mockk_version = "1.14.12"
     val room_version = "2.8.5"
     implementation(libs.androidx.core.ktx)
